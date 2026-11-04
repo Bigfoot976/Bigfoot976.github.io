@@ -18,7 +18,7 @@
 </div>
 <script>
 (()=>{
-const W=160,VER='v1.3';let H=240;
+const W=160,VER='v1.4';let H=240;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 const cv=document.getElementById('c'),g=cv.getContext('2d');
@@ -569,8 +569,8 @@ function setKey(code,v){
 addEventListener('keydown',e=>{
   if(['ArrowLeft','ArrowRight','Space','Enter'].includes(e.code))e.preventDefault();
   setKey(e.code,true);
-  if(e.code==='Space'&&state==='play')fire();
-  if((e.code==='Space'||e.code==='Enter')&&(state==='menu'||(state==='dead'&&crashT>.8)))start();
+  if(e.code==='Space'&&state==='play'&&!e.repeat)fire();
+  if(!e.repeat&&(e.code==='Space'||e.code==='Enter')&&(state==='menu'||(state==='dead'&&crashT>.8)))start();
 });
 addEventListener('keyup',e=>setKey(e.code,false));
 addEventListener('blur',()=>{keys.L=keys.R=false;});
