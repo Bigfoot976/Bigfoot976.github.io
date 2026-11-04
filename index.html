@@ -18,7 +18,7 @@
 </div>
 <script>
 (()=>{
-const W=160,VER='v1.2';let H=240;
+const W=160,VER='v1.3';let H=240;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 const cv=document.getElementById('c'),g=cv.getContext('2d');
@@ -368,6 +368,7 @@ function update(dt){
     // Steuerung
     const dirIn=(keys.R?1:0)-(keys.L?1:0);
     let target=dirIn*95;
+    if(dirIn)plane.tx=null;
     if(!dirIn&&plane.tx!=null){
       const d=plane.tx-plane.x;
       target=Math.max(-220,Math.min(220,d*12));
