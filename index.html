@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 </div>
 <script>
 (()=>{
-const W=160,VER='v1.4';let H=240;
+const W=160,VER='v1.5';let H=240;
 function lsGet(k){try{return localStorage.getItem(k);}catch(e){return null;}}
 function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){}}
 const cv=document.getElementById('c'),g=cv.getContext('2d');
@@ -472,7 +472,8 @@ function draw(){
   if(state==='menu')drawMenu();
   else{drawHUD();if(state==='play'&&armorMsg>0){armorMsg-=1/60;if(Math.floor(t*6)%2===0)outl('GEPANZERT! NICHT ABSCHIESSBAR',W/2,29,'#8fb4ff',1,'c');}if(state==='dead')drawOver();}
   drawMute();
-  txt(VER,W-3,H-6,'rgba(255,255,255,.45)',.65,'r');
+  txt('\u00A9 2026 CWS \u2022 MFC-KUCHA E.V.',4,H-6,'rgba(255,255,255,.45)',.62,'l');
+  txt(VER,W-4,H-6,'rgba(255,255,255,.45)',.62,'r');
 }
 const muteRect={x:W-17,y:26,w:14,h:12};
 function toggleMute(){
@@ -534,10 +535,10 @@ function drawMenu(){
   drawHeli({x:40,y:128,dir:1,a:t*30,armor:false});drawHeli({x:120,y:128,dir:1,a:t*30,armor:true});
   outl('ABSCHIESSEN',40,144,'#ffbe66',.95,'c');outl('AUSWEICHEN!',120,144,'#9ec0ff',.95,'c');
   drawPlane(W/2,170+Math.sin(t*2)*3,Math.sin(t*1.5)*60);
-  pill(36,190,W-72,17,1+.03*Math.sin(t*5));
-  outl('PRESS START',W/2,194.3,'#fff',1.2,'c');
-  txt('WISCHEN LENKT - TIPPEN FEUERT',W/2,212,'#e8f2ff',.85,'c');
-  txt('HIGHSCORE '+String(hi).padStart(5,'0'),W/2,225,'#8fd0ff',.95,'c');
+  pill(36,183,W-72,17,1+.03*Math.sin(t*5));
+  outl('PRESS START',W/2,189.8,'#fff',1.2,'c');
+  txt('WISCHEN LENKT - TIPPEN FEUERT',W/2,203,'#e8f2ff',.85,'c');
+  txt('HIGHSCORE '+String(hi).padStart(5,'0'),W/2,214,'#8fd0ff',.9,'c');
   g.restore();
 }
 function drawOver(){
